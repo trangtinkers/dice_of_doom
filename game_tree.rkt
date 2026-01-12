@@ -1,5 +1,6 @@
 #lang racket
 
+;; How game trees work
 ;; generating game tree in tic tac toe
 ;; https://claude.ai/share/bbbb58f6-4cb1-490a-bb42-994c9f376e90
 
@@ -14,6 +15,7 @@
 
 ;; A Move is a (list Action GameTree)
 ;; Interpretation: an action paired with the resulting game tree
+;; example: (list (action 'X 0) (ttt '((X _ _) (_ _ _) (_ _ _)) '()))
 
 ;; A Player is one of:
 ;; - 'X
