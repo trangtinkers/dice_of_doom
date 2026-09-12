@@ -1,5 +1,9 @@
 #lang racket
 
+;; The two board helpers below were called but never defined. They live in ttt.rkt,
+;; the completed version of this sketch -- run that one to actually play.
+(require (only-in "ttt.rkt" board-find-free-fields board-take-field))
+
 ;; How game trees can be generated
 ;; generating game tree in tic tac toe
 ;; https://claude.ai/share/bbbb58f6-4cb1-490a-bb42-994c9f376e90
@@ -90,10 +94,13 @@
     (for/list ((f free-fields))
       (define actnow (action player f))
       (define board1 (board-take-field board0 player f))
-      (list actnow (generate-tree board1 opponent player)))))
+      (list actnow (generate-tree board1 opponent player))))
 
-;; -- start here --
-(generate-tree the-empty-board player1 player2)
+  ;; -- start here --
+  ;; As written this was (generate-tree the-empty-board player1 player2), which could
+  ;; not run: the-empty-board is spelled EMPTY-BOARD above, and the call sat outside
+  ;; the function body, leaving generate-ttt-tree ending on a define.
+  (generate-tree EMPTY-BOARD player1 player2))
 
 ;; how to improve the tree operations efficiency
 
